@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "DAUUChart"
-  s.version      = "1.0.0"
+  s.version      = "1.0.2"
   s.summary      = "all kinds of categories for iOS develop"
 
   s.description  = <<-DESC
