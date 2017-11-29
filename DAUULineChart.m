@@ -1,16 +1,17 @@
 //
-//  UULineChart.m
-//  UUChartDemo
+//  PNBar.h
+//  PNChartDemo
 //
-//  Created by shake on 14-7-24.
-//  Copyright (c) 2014年 uyiuyao. All rights reserved.
+//  Created by hongliang li on 17-11-29.
+//  Copyright (c) 2017年 hongliang li . All rights reserved.
+//
 //
 
-#import "UULineChart.h"
-#import "UUChartConst.h"
-#import "UUChartLabel.h"
+#import "DAUULineChart.h"
+#import "DAUUChartConst.h"
+#import "DAUUChartLabel.h"
 #define YkCount 10.0
-@implementation UULineChart {
+@implementation DAUULineChart {
     NSHashTable *_chartLabelsForX;
 }
 
@@ -133,7 +134,7 @@
     CGFloat levelHeight = chartCavanHeight /(YkCount - 1);
 
     for (int i=0; i < YkCount; i++) {
-        UUChartLabel * label = [[UUChartLabel alloc] initWithFrame:CGRectMake(0.0,chartCavanHeight-i*levelHeight+YkCount, UUYLabelwidth, UULabelHeight)];
+        DAUUChartLabel * label = [[DAUUChartLabel alloc] initWithFrame:CGRectMake(0.0,chartCavanHeight-i*levelHeight+YkCount, UUYLabelwidth, UULabelHeight)];
 		label.text = [NSString stringWithFormat:@"%.1f",(float)(level * i+_yValueMin)];
 		[self addSubview:label];
     }
@@ -204,7 +205,7 @@
     self.labelCount = (num-1);
     for (int i=0; i<xLabels.count; i++) {
         NSString *labelText = xLabels[i];
-        UUChartLabel * label = [[UUChartLabel alloc] initWithFrame:CGRectMake(i * _xLabelWidth+5, self.frame.size.height - UULabelHeight, _xLabelWidth-5, UULabelHeight)];
+        DAUUChartLabel * label = [[DAUUChartLabel alloc] initWithFrame:CGRectMake(i * _xLabelWidth+5, self.frame.size.height - UULabelHeight, _xLabelWidth-5, UULabelHeight)];
         label.textAlignment = NSTextAlignmentRight;
         label.text = labelText;
         [self addSubview:label];

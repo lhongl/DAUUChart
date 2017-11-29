@@ -1,22 +1,23 @@
 //
-//  UUBarChart.m
-//  UUChartDemo
+//  PNBar.h
+//  PNChartDemo
 //
-//  Created by shake on 14-7-24.
-//  Copyright (c) 2014年 uyiuyao. All rights reserved.
+//  Created by hongliang li on 17-11-29.
+//  Copyright (c) 2017年 hongliang li . All rights reserved.
+//
 //
 
-#import "UUBarChart.h"
-#import "UUChartLabel.h"
-#import "UUBar.h"
+#import "DAUUBarChart.h"
+#import "DAUUChartLabel.h"
+#import "DAUUBar.h"
 
-@interface UUBarChart ()
+@interface DAUUBarChart ()
 {
     UIScrollView *myScrollView;
 }
 @end
 
-@implementation UUBarChart {
+@implementation DAUUBarChart {
     NSHashTable *_chartLabelsForX;
 }
 
@@ -69,7 +70,7 @@
     CGFloat levelHeight = chartCavanHeight /4.0;
     
     for (int i=0; i<5; i++) {
-        UUChartLabel * label = [[UUChartLabel alloc] initWithFrame:CGRectMake(0.0,chartCavanHeight-i*levelHeight+5, UUYLabelwidth, UULabelHeight)];        
+        DAUUChartLabel * label = [[DAUUChartLabel alloc] initWithFrame:CGRectMake(0.0,chartCavanHeight-i*levelHeight+5, UUYLabelwidth, UULabelHeight)];        
         CAShapeLayer *shapeLayer = [CAShapeLayer layer];
         UIBezierPath *path = [UIBezierPath bezierPath];
         [path moveToPoint:CGPointMake(UUYLabelwidth,UULabelHeight+i*levelHeight)];
@@ -104,7 +105,7 @@
     _xLabelWidth = myScrollView.frame.size.width/num;
     
     for (int i=0; i<xLabels.count; i++) {
-        UUChartLabel * label = [[UUChartLabel alloc] initWithFrame:CGRectMake((i *  _xLabelWidth )-5, self.frame.size.height - UULabelHeight - 5, _xLabelWidth + 10, UULabelHeight)];
+        DAUUChartLabel * label = [[DAUUChartLabel alloc] initWithFrame:CGRectMake((i *  _xLabelWidth )-5, self.frame.size.height - UULabelHeight - 5, _xLabelWidth + 10, UULabelHeight)];
         label.text = xLabels[i];
         [label setTransform:CGAffineTransformMakeRotation(-M_PI_4)];
         [myScrollView addSubview:label];
@@ -142,7 +143,7 @@
             float value = [valueString floatValue];
             float grade = ((float)value-_yValueMin) / ((float)_yValueMax-_yValueMin);
             
-            UUBar * bar = [[UUBar alloc] initWithFrame:CGRectMake((j+(_yValues.count==1?0.1:0.05))*_xLabelWidth +i*_xLabelWidth * 0.47, UULabelHeight, _xLabelWidth * (_yValues.count==1?0.5:0.3), chartCavanHeight)];
+            DAUUBar * bar = [[DAUUBar alloc] initWithFrame:CGRectMake((j+(_yValues.count==1?0.1:0.05))*_xLabelWidth +i*_xLabelWidth * 0.47, UULabelHeight, _xLabelWidth * (_yValues.count==1?0.5:0.3), chartCavanHeight)];
             bar.barColor = [_colors objectAtIndex:i];
             bar.gradePercent = grade;
             [myScrollView addSubview:bar];

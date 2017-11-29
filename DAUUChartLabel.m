@@ -1,15 +1,16 @@
 //
-//  PNChartLabel.m
-//  PNChart
+//  PNBar.h
+//  PNChartDemo
 //
-//  Created by shake on 14-7-24.
-//  Copyright (c) 2014年 uyiuyao. All rights reserved.
+//  Created by hongliang li on 17-11-29.
+//  Copyright (c) 2017年 hongliang li . All rights reserved.
+//
 //
 
-#import "UUChartLabel.h"
-#import "UUChartConst.h"
+#import "DAUUChartLabel.h"
+#import "DAUUChartConst.h"
 
-@implementation UUChartLabel
+@implementation DAUUChartLabel
 
 - (id)initWithFrame:(CGRect)frame
 {

@@ -1,15 +1,16 @@
 //
-//  UUBarChart.h
-//  UUChartDemo
+//  PNBar.h
+//  PNChartDemo
 //
-//  Created by shake on 14-7-24.
-//  Copyright (c) 2014年 uyiuyao. All rights reserved.
+//  Created by hongliang li on 17-11-29.
+//  Copyright (c) 2017年 hongliang li . All rights reserved.
+//
 //
 
 #import <UIKit/UIKit.h>
-#import "UUChartConst.h"
+#import "DAUUChartConst.h"
 
-@interface UUBarChart : UIView
+@interface DAUUBarChart : UIView
 
 @property (strong, nonatomic) NSArray * xLabels;
 @property (strong, nonatomic) NSArray * yLabels;

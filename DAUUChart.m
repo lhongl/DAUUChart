@@ -1,18 +1,19 @@
 //
-//  UUChart.m
-//  UUChart
+//  PNBar.h
+//  PNChartDemo
 //
-//  Created by shake on 14-7-24.
-//  Copyright (c) 2014年 uyiuyao. All rights reserved.
+//  Created by hongliang li on 17-11-29.
+//  Copyright (c) 2017年 hongliang li . All rights reserved.
+//
 //
 
-#import "UUChart.h"
+#import "DAUUChart.h"
 #define YkCount 10.0
-@interface UUChart ()
+@interface DAUUChart ()
 
-@property (strong, nonatomic) UULineChart * lineChart;
+@property (strong, nonatomic) DAUULineChart * lineChart;
 
-@property (strong, nonatomic) UUBarChart * barChart;
+@property (strong, nonatomic) DAUUBarChart * barChart;
 
 @property (assign, nonatomic) id<UUChartDataSource> dataSource;
 
@@ -20,7 +21,7 @@
 
 @end
 
-@implementation UUChart
+@implementation DAUUChart
 
 - (id)initWithFrame:(CGRect)rect dataSource:(id<UUChartDataSource>)dataSource style:(UUChartStyle)style
 {
@@ -44,7 +45,7 @@
 -(void)setUpChart{
 	if (self.chartStyle == UUChartStyleLine) {
         if(!_lineChart){
-            _lineChart = [[UULineChart alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+            _lineChart = [[DAUULineChart alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
             [self addSubview:_lineChart];
         }
         //选择标记范围
@@ -122,7 +123,7 @@
 	}else if (self.chartStyle == UUChartStyleBar)
 	{
         if (!_barChart) {
-            _barChart = [[UUBarChart alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+            _barChart = [[DAUUBarChart alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
             [self addSubview:_barChart];
         }
         if ([self.dataSource respondsToSelector:@selector(chartRange:)]) {

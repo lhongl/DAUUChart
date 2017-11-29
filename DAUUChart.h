@@ -1,17 +1,17 @@
 //
-//  UUChart.h
-//	Version 0.1
-//  UUChart
+//  PNBar.h
+//  PNChartDemo
 //
-//  Created by shake on 14-7-24.
-//  Copyright (c) 2014年 uyiuyao. All rights reserved.
+//  Created by hongliang li on 17-11-29.
+//  Copyright (c) 2017年 hongliang li . All rights reserved.
+//
 //
 
 #import <UIKit/UIKit.h>
-#import "UUChart.h"
-#import "UUChartConst.h"
-#import "UULineChart.h"
-#import "UUBarChart.h"
+#import "DAUUChart.h"
+#import "DAUUChartConst.h"
+#import "DAUULineChart.h"
+#import "DAUUBarChart.h"
 
 typedef NS_ENUM(NSInteger, UUChartStyle){
     UUChartStyleLine = 0,
@@ -58,7 +58,7 @@ typedef NS_ENUM(NSInteger, UUChartStyle){
 @end
 
 
-@interface UUChart : UIView
+@interface DAUUChart : UIView
 
 @property (nonatomic) UUChartStyle chartStyle;
 
