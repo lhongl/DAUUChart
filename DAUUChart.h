@@ -39,6 +39,11 @@ typedef NS_ENUM(NSInteger, UUChartStyle){
 //标记数值区域
 - (CGRange)chartHighlightRangeInLine:(UUChart *)chart;
 
+//y轴分几个
+- (NSInteger)chartYLabelRow:(UUChart *)chart;
+
+//是否隐藏滑动线
+- (BOOL)charthiddleSlide:(UUChart *)chart;
 
 //需要标准线
 - (NSArray *)chartHighlightInLine:(UUChart *)chart;

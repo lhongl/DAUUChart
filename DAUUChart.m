@@ -8,7 +8,6 @@
 //
 
 #import "DAUUChart.h"
-#define YkCount 10.0
 @interface DAUUChart ()
 
 @property (strong, nonatomic) DAUULineChart * lineChart;
@@ -17,7 +16,7 @@
 
 @property (assign, nonatomic) id<UUChartDataSource> dataSource;
 
-
+@property (assign, nonatomic) NSInteger yLabelRow;
 
 @end
 
@@ -51,6 +50,20 @@
         //选择标记范围
         if ([self.dataSource respondsToSelector:@selector(chartHighlightRangeInLine:)]) {
             [_lineChart setMarkRange:[self.dataSource chartHighlightRangeInLine:self]];
+        }
+        
+        //y轴分几个
+        if ([self.dataSource respondsToSelector:@selector(chartYLabelRow:)]) {
+            self.yLabelRow = [self.dataSource chartYLabelRow:self];
+            [_lineChart setYLabelCount:[self.dataSource chartYLabelRow:self]];
+        }else{
+            self.yLabelRow  = 10;
+            [_lineChart setYLabelCount:10];
+        }
+        
+        //是否隐藏滑动按钮
+        if ([self.dataSource respondsToSelector:@selector(charthiddleSlide:)]) {
+            [_lineChart setHiddleSlide:[self.dataSource charthiddleSlide:self]];
         }
         
         //标准线
@@ -88,7 +101,7 @@
         //显示竖线
         if ([self.dataSource respondsToSelector:@selector(chart:showVerticalLine:)]) {
             NSMutableArray *showHorizonArray = [[NSMutableArray alloc]init];
-            for (int i=0; i < YkCount; i++) {
+            for (int i=0; i < self.yLabelRow; i++) {
                 if ([self.dataSource chart:self showVerticalLine:i]) {
                     [showHorizonArray addObject:@"1"];
                 }else{

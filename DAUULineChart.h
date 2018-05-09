@@ -26,10 +26,11 @@
 @property (nonatomic) CGFloat xLabelWidth;
 @property (nonatomic) CGFloat yValueMin;
 @property (nonatomic) CGFloat yValueMax;
+@property (nonatomic, assign) NSInteger  yLabelCount;
 @property (nonatomic, strong)UIView *lineImage;
 @property (nonatomic, assign)NSInteger labelCount;
 @property (nonatomic, assign) CGRange markRange;
-
+@property (nonatomic, assign) BOOL hiddleSlide;
 @property (nonatomic, assign) CGRange chooseRange;
 
 -(void)strokeChart;

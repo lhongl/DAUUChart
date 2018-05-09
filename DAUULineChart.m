@@ -10,7 +10,6 @@
 #import "DAUULineChart.h"
 #import "DAUUChartConst.h"
 #import "DAUUChartLabel.h"
-#define YkCount 10.0
 @implementation DAUULineChart {
     NSHashTable *_chartLabelsForX;
 }
@@ -104,6 +103,17 @@
     [self setYLabels:yValues];
 }
 
+- (void)setYLabelCount:(NSInteger)yLabelCount{
+    _yLabelCount = yLabelCount;
+}
+
+- (void)setHiddleSlide:(BOOL)hiddleSlide{
+    _hiddleSlide = hiddleSlide;
+    if (hiddleSlide == YES) {
+        [self.lineImage removeFromSuperview];
+    }
+}
+
 -(void)setYLabels:(NSArray *)yLabels
 {
     NSInteger max = 0;
@@ -120,7 +130,7 @@
             }
         }
     }
-    max = max < YkCount ? YkCount:max;
+    max = max < self.yLabelCount ? self.yLabelCount:max;
     _yValueMin = 0;
     _yValueMax = (int)max;
     
@@ -129,12 +139,12 @@
         _yValueMin = _chooseRange.min;
     }
 
-    float level = (_yValueMax-_yValueMin) /(YkCount - 1);
+    float level = (_yValueMax-_yValueMin) /(self.yLabelCount - 1);
     CGFloat chartCavanHeight = self.frame.size.height - UULabelHeight*3;
-    CGFloat levelHeight = chartCavanHeight /(YkCount - 1);
+    CGFloat levelHeight = chartCavanHeight /(self.yLabelCount - 1);
 
-    for (int i=0; i < YkCount; i++) {
-        DAUUChartLabel * label = [[DAUUChartLabel alloc] initWithFrame:CGRectMake(0.0,chartCavanHeight-i*levelHeight+YkCount, UUYLabelwidth, UULabelHeight)];
+    for (int i=0; i < self.yLabelCount; i++) {
+        DAUUChartLabel * label = [[DAUUChartLabel alloc] initWithFrame:CGRectMake(0.0,chartCavanHeight-i*levelHeight+self.yLabelCount, UUYLabelwidth, UULabelHeight)];
 		label.text = [NSString stringWithFormat:@"%.1f",(float)(level * i+_yValueMin)];
 		[self addSubview:label];
     }
@@ -164,7 +174,7 @@
     }
 
     //画横线
-    for (int i=0; i< YkCount; i++) {
+    for (int i=0; i< self.yLabelCount; i++) {
         if ([_showHorizonLine[i] integerValue]>0) {
             CAShapeLayer *shapeLayer = [CAShapeLayer layer];
             UIBezierPath *path = [UIBezierPath bezierPath];
@@ -172,7 +182,7 @@
             [path addLineToPoint:CGPointMake(self.frame.size.width,UULabelHeight+i*levelHeight)];
             [path closePath];
             shapeLayer.path = path.CGPath;
-            if (i == YkCount - 1) {
+            if (i == self.yLabelCount - 1) {
                shapeLayer.strokeColor = [[[UIColor blackColor] colorWithAlphaComponent:0.4] CGColor];
             }else{
                shapeLayer.strokeColor = [[[UIColor blackColor] colorWithAlphaComponent:0.1] CGColor];
